@@ -1,32 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sitio web afiliado de Booking: reserva hoteles, explora destinos y encuentra las mejores ofertas de alojamiento." />
-  <meta name="author" content="Travel Ranker" />
-  <meta name="robots" content="index, follow" />
-  <title>Afiliado Booking | Travel Ranker</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Travel Ranker - Checkpoint</title>
+  <meta name="description" content="Sitio afiliado Travel Ranker - Hoteles y destinos." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  
+
   <!-- Navbar -->
   <header class="navbar" id="navbar">
     <div class="container nav-container">
-      <!-- Logo -->
-      <a href="/" class="logo">Travel Ranker</a>
+      <!-- Logo (mantener estructura para que .logo img en CSS funcione) -->
+      <a href="/" class="logo" aria-label="Inicio - Travel Ranker">
+        <img src="https://raw.githubusercontent.com/ChapersLab/Travel-Ranker/refs/heads/master/img/image%20(7).png"
+             alt="Travel Ranker logo" />
+      </a>
 
       <!-- Botón menú móvil -->
-      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
 
-      <!-- Enlaces de navegación -->
-      <nav class="nav-menu" id="nav-menu">
+      <!-- Menú de navegación -->
+      <nav class="nav-menu" id="nav-menu" role="navigation" aria-label="Menú principal">
         <ul>
           <li><a href="#hoteles">Hoteles</a></li>
           <li><a href="#destinos">Destinos</a></li>
@@ -38,8 +38,44 @@
     </div>
   </header>
 
-  <!-- Overlay con efecto glassmorphism -->
-  <div class="overlay" id="overlay"></div>
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+  <!-- HERO SLIDER (reemplaza hero) -->
+  <section class="hero-slider" aria-label="Hero">
+    <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1950&q=80');">
+      <div class="hero-content">
+        <h1>Impulsa tu marca al siguiente nivel</h1>
+        <p>Diseño web moderno, rápido y orientado a resultados.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">Crear mi sitio</a>
+          <a href="#" class="btn-secondary">Ver servicios</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1950&q=80');">
+      <div class="hero-content">
+        <h1>Diseños elegantes y funcionales</h1>
+        <p>Transformamos ideas en experiencias digitales memorables.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">Quiero un diseño</a>
+          <a href="#" class="btn-secondary">Portafolio</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1950&q=80');">
+      <div class="hero-content">
+        <h1>Tecnología que convierte</h1>
+        <p>Desarrollo web optimizado para velocidad, SEO y ventas.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">Optimizar mi web</a>
+          <a href="#" class="btn-secondary">Contactar</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>

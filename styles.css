@@ -1,13 +1,15 @@
+/* Import fuente elegante para navbar */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
+
 /* ==============================
-   Variables base (Cobre Urbano)
+   Variables base
    ============================== */
 :root {
-  --color-primary: #3a1f04;         /* Marrón oscuro elegante */
-  --color-primary-light: #5a2e08;   /* Marrón cálido medio */
-  --color-secondary: #d4af37;       /* Dorado metálico */
-  --color-accent: #b87333;          /* Cobre vibrante */
-  --color-bg: #f5f3ef;              /* Fondo marfil cálido */
-  --color-text: #2b2b2b;
+  --color-primary: #8c4b2d;        /* Cobre profundo */
+  --color-primary-light: #a75a32;  /* Cobre más brillante */
+  --color-secondary: #f2d4b6;      /* Arena cálida premium */
+  --color-text: #222;
+  --color-bg: #ffffff;
   --font-main: 'Poppins', sans-serif;
 }
 
@@ -40,12 +42,13 @@ body {
 .navbar {
   background-color: var(--color-primary);
   color: #fff;
-  padding: 1rem 0;
+  padding: 1.6rem 0; /* ajuste solicitado para logo grande */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: background-color 0.4s ease;
+  overflow: visible; /* <-- para evitar recorte del logo */
 }
 
 .navbar.active {
@@ -58,11 +61,21 @@ body {
   justify-content: space-between;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  text-decoration: none;
+/* ==============================
+   LOGO
+   ============================== */
+.logo img {
+  height: 85px; /* Opción B: Extra grande desktop */
+  width: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 5px; /* <- ADICIÓN: redondeo sutil de esquinas */
+}
+
+@media (max-width: 768px) {
+  .logo img {
+    height: 70px; /* Opción B: mobile */
+  }
 }
 
 /* --- Menú de navegación --- */
@@ -72,22 +85,47 @@ body {
   gap: 2rem;
 }
 
+/* <-- CAMBIO: tamaño y área clicable para accesibilidad/legibilidad
+   y fuente elegante (Playfair Display) aplicada sólo al navbar links */
 .nav-menu a {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease-in-out;
+  position: relative; /* necesario para underline animado */
+  font-family: "Playfair Display", serif; /* fuente elegante para navbar */
+  font-size: 1.25rem;           /* 20px base (accesible) - DESKTOP */
+  padding: 0.5rem 0.25rem;   /* mayor area clickeable sin romper layout */
+  display: inline-block;
 }
 
-.nav-menu a:hover,
-.nav-menu a:focus {
+.nav-menu a:hover {
   color: var(--color-secondary);
-  outline: none;
+
+  /* Glow suave (integrado) */
+  text-shadow: 0 0 6px rgba(242, 212, 182, 0.55);
+}
+
+/* ===== Underline animado para links ===== */
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-secondary);
+  transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
 }
 
 /* ==============================
    Menú móvil (hamburguesa)
    ============================== */
+/* Ajustes de botón hamburguesa: padding aumentado para evitar recorte de la X */
 .nav-toggle {
   display: none;
   background: none;
@@ -96,16 +134,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  padding: 5px;
+  gap: 4px;
+  padding: 14px; /* Aumentado: suficiente espacio para la X */
   transition: transform 0.3s ease-in-out;
 }
 
-/* --- Las tres barras --- */
+/* Barras (hamburguesa) dimensionadas según petición */
 .nav-toggle .bar {
   display: block;
-  width: 25px;
-  height: 3px;
+  width: 34px;  /* GRANDE */
+  height: 4.5px; /* GRANDE */
   background-color: #fff;
   border-radius: 2px;
   transform-origin: center;
@@ -150,7 +188,7 @@ body {
     flex-direction: column;
     background-color: var(--color-primary);
     position: absolute;
-    top: 70px;
+    top: 110px; /* <-- aumentado para evitar recorte del logo */
     right: 0;
     width: 100%;
     text-align: center;
@@ -158,6 +196,12 @@ body {
     opacity: 0;
     transform: translateY(-15px);
     transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  /* <-- FIX crítico: fuerza vertical en <ul> para mobile */
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .nav-menu.active {
@@ -198,15 +242,126 @@ body {
   .nav-toggle {
     display: flex;
   }
+
+  /* Ajuste tipográfico mobile: tamaño ligeramente mayor */
+  .nav-menu a {
+    font-size: 1.375rem; /* ~22px para mejor lectura en móvil */
+    padding: 0.9rem 0;   /* área de toque generosa */
+  }
 }
 
 /* ==============================
-   Accesibilidad: enfoque visible
-   ============================== */
-a:focus-visible,
-button:focus-visible {
-  outline: 3px solid var(--color-secondary);
-  outline-offset: 3px;
-  border-radius: 4px;
-  transition: outline-color 0.2s ease-in-out;
+          HERO
+============================== */
+.hero {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f8efe8 100%);
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  border: 2px solid var(--color-primary);
+  padding: 0.9rem 1.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--color-primary);
+  background: #fff;
+}
+
+/* =======================================================
+   HERO SLIDER (ADDED)
+   - this block is appended and doesn't overwrite navbar
+======================================================= */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: #222;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .hero-slider {
+    height: 70vh;
+  }
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
 }
