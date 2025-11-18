@@ -73,29 +73,68 @@ if (navToggle && navMenu && overlay) {
 }
 
 // ==============================
-// HERO SLIDER (3 slides)
+// HERO START
 // ==============================
-let currentSlide = 0;
-const slides = document.querySelectorAll('.hero-slide');
 
-function showSlide(index) {
-  slides.forEach(s => s.classList.remove('active'));
-  slides[index].classList.add('active');
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".hero-slide");
+  const dotsContainer = document.querySelector(".hero-dots");
+  const prevBtn = document.querySelector(".hero-prev");
+  const nextBtn = document.querySelector(".hero-next");
 
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
-}
+  let currentIndex = 0;
+  let autoSlide;
 
-// start slider only if slides exist
-if (slides.length > 0) {
-  showSlide(0);
-  const slideInterval = setInterval(nextSlide, 6000);
-
-  // optional: pause on hover (desktop)
-  slides.forEach(slide => {
-    slide.addEventListener('mouseenter', () => clearInterval(slideInterval));
-    slide.addEventListener('mouseleave', () => setInterval(nextSlide, 6000));
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(index));
+    dotsContainer.appendChild(dot);
   });
-}
+
+  const dots = dotsContainer.querySelectorAll("button");
+
+  function goToSlide(index) {
+    slides[currentIndex].classList.remove("active");
+    dots[currentIndex].classList.remove("active");
+
+    currentIndex = index;
+
+    slides[currentIndex].classList.add("active");
+    dots[currentIndex].classList.add("active");
+  }
+
+  function nextSlide() {
+    goToSlide((currentIndex + 1) % slides.length);
+  }
+
+  function prevSlide() {
+    goToSlide((currentIndex - 1 + slides.length) % slides.length);
+  }
+
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    restartAutoSlide();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    restartAutoSlide();
+  });
+
+  function startAutoSlide() {
+    autoSlide = setInterval(nextSlide, 7000);
+  }
+
+  function restartAutoSlide() {
+    clearInterval(autoSlide);
+    startAutoSlide();
+  }
+
+  startAutoSlide();
+});
+
+// ==============================
+// HERO END
+// ==============================

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Travel Ranker - Checkpoint</title>
-  <meta name="description" content="Sitio afiliado Travel Ranker - Hoteles y destinos." />
+  <meta name="description" content="Sitio afiliado Travel Ranker - Hoteles, vuelos, paquetes y destinos." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,7 +12,8 @@
   <!-- Navbar -->
   <header class="navbar" id="navbar">
     <div class="container nav-container">
-      <!-- Logo (mantener estructura para que .logo img en CSS funcione) -->
+
+      <!-- Logo -->
       <a href="/" class="logo" aria-label="Inicio - Travel Ranker">
         <img src="https://raw.githubusercontent.com/ChapersLab/Travel-Ranker/refs/heads/master/img/image%20(7).png"
              alt="Travel Ranker logo" />
@@ -30,51 +31,108 @@
         <ul>
           <li><a href="#hoteles">Hoteles</a></li>
           <li><a href="#destinos">Destinos</a></li>
-          <li><a href="#inspiracion">Inspiración</a></li>
-          <li><a href="#ofertas">Ofertas</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#vuelos">Vuelos</a></li>
+          <li><a href="#paquetes">Paquetes</a></li>
+          <li><a href="#guias">Guías</a></li>
+          <li><a href="#quienes-somos">Quiénes Somos</a></li>
         </ul>
       </nav>
+
     </div>
   </header>
 
   <!-- Overlay -->
   <div class="overlay" id="overlay" aria-hidden="true"></div>
 
-  <!-- HERO SLIDER (reemplaza hero) -->
-  <section class="hero-slider" aria-label="Hero">
-    <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1950&q=80');">
+<!-- ==============================
+     HERO START
+============================== -->
+
+<section class="hero">
+  <div class="hero-slider">
+
+    <!-- Slide 1 -->
+    <div class="hero-slide active" 
+         style="background-image: url('./img/hero/hotel-lujo-piscina-atardecer.jpeg');">
       <div class="hero-content">
-        <h1>Impulsa tu marca al siguiente nivel</h1>
-        <p>Diseño web moderno, rápido y orientado a resultados.</p>
-        <div class="hero-buttons">
-          <a href="#" class="btn-primary">Crear mi sitio</a>
-          <a href="#" class="btn-secondary">Ver servicios</a>
-        </div>
+        <h1>Hoteles al Mejor Precio Garantizado</h1>
+        <p>Encuentra hoteles económicos, resorts todo incluido y estadías exclusivas con nuestras guías recomendadas para ahorrar y viajar más.</p>
+        <a href="#hoteles" class="hero-btn">Explorar Hoteles</a>
       </div>
     </div>
 
-    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1950&q=80');">
+    <!-- Slide 2 -->
+    <div class="hero-slide" 
+         style="background-image: url('./img/hero/joven-viajero-explorando.jpeg');">
       <div class="hero-content">
-        <h1>Diseños elegantes y funcionales</h1>
-        <p>Transformamos ideas en experiencias digitales memorables.</p>
-        <div class="hero-buttons">
-          <a href="#" class="btn-primary">Quiero un diseño</a>
-          <a href="#" class="btn-secondary">Portafolio</a>
-        </div>
+        <h1>Destinos Recomendados para tu Próximo Viaje</h1>
+        <p>Descubre lugares mágicos, consejos de viaje y guías completas para planificar aventuras memorables en cualquier temporada.</p>
+        <a href="#destinos" class="hero-btn">Ver Destinos</a>
       </div>
     </div>
 
-    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1950&q=80');">
+    <!-- Slide 3 (imagen cambiada) -->
+    <div class="hero-slide"
+         style="background-image: url('./img/hero/avion-viaje-atardecer.jpeg');">
       <div class="hero-content">
-        <h1>Tecnología que convierte</h1>
-        <p>Desarrollo web optimizado para velocidad, SEO y ventas.</p>
-        <div class="hero-buttons">
-          <a href="#" class="btn-primary">Optimizar mi web</a>
-          <a href="#" class="btn-secondary">Contactar</a>
-        </div>
+        <h1>Vuelos Económicos a Todo el Mundo</h1>
+        <p>Compara precios, encuentra ofertas y reserva vuelos baratos con nuestra selección de rutas populares y trucos para ahorrar.</p>
+        <a href="#vuelos" class="hero-btn">Buscar Vuelos</a>
       </div>
     </div>
+
+    <!-- Slide 4 -->
+    <div class="hero-slide"
+         style="background-image: url('./img/hero/mapa-mejores-destinos.jpeg');">
+      <div class="hero-content">
+        <h1>Destinos Imperdibles del Año</h1>
+        <p>Explora playas, ciudades icónicas y rutas naturales recomendadas para inspirar tu próxima aventura de viaje.</p>
+        <a href="#guias" class="hero-btn">Descubrir Más</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Slider Navigation -->
+  <div class="hero-nav">
+    <button class="hero-prev" aria-label="Slide anterior">‹</button>
+    <button class="hero-next" aria-label="Slide siguiente">›</button>
+  </div>
+
+  <!-- Dots -->
+  <div class="hero-dots"></div>
+</section>
+
+<!-- ==============================
+     HERO END
+============================== -->
+
+  <!-- ============================
+       SECCIONES NUEVAS (vacías)
+     ============================ -->
+
+  <section id="hoteles" class="placeholder-section">
+    <h2>Hoteles</h2>
+  </section>
+
+  <section id="destinos" class="placeholder-section">
+    <h2>Destinos</h2>
+  </section>
+
+  <section id="vuelos" class="placeholder-section">
+    <h2>Vuelos</h2>
+  </section>
+
+  <section id="paquetes" class="placeholder-section">
+    <h2>Paquetes</h2>
+  </section>
+
+  <section id="guias" class="placeholder-section">
+    <h2>Guías</h2>
+  </section>
+
+  <section id="quienes-somos" class="placeholder-section">
+    <h2>Quiénes Somos</h2>
   </section>
 
   <script src="script.js"></script>
