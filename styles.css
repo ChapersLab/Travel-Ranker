@@ -37,22 +37,23 @@ body {
 }
 
 /* ==============================
-   Navbar principal
-   ============================== */
+   Navbar principal (paleta invertida)
+============================== */
 .navbar {
-  background-color: var(--color-primary);
-  color: #fff;
-  padding: 1.6rem 0; /* ajuste solicitado para logo grande */
+  background-color: #ffffff; /* fondo blanco */
+  color: var(--color-primary); /* texto e iconos con color primario */
+  padding: 1.6rem 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.4s ease;
-  overflow: visible; /* <-- para evitar recorte del logo */
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow: visible; /* para evitar recorte del logo */
 }
 
 .navbar.active {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-secondary); /* color activo al hacer scroll */
+  color: var(--color-primary);
 }
 
 .nav-container {
@@ -61,52 +62,47 @@ body {
   justify-content: space-between;
 }
 
-/* ==============================
-   LOGO
-   ============================== */
+/* LOGO */
 .logo img {
-  height: 85px; /* Opción B: Extra grande desktop */
+  height: 85px;
   width: auto;
   display: block;
   object-fit: contain;
-  border-radius: 5px; /* <- ADICIÓN: redondeo sutil de esquinas */
+  border-radius: 5px;
+  transform: scale(1.15); /* <- Aumenta el tamaño visual */
+  transform-origin: center; /* Opcional: lo centra */
 }
 
 @media (max-width: 768px) {
   .logo img {
-    height: 70px; /* Opción B: mobile */
+    height: 70px;
   }
 }
 
-/* --- Menú de navegación --- */
+/* Menú de navegación */
 .nav-menu ul {
   list-style: none;
   display: flex;
   gap: 2rem;
 }
 
-/* <-- CAMBIO: tamaño y área clicable para accesibilidad/legibilidad
-   y fuente elegante (Playfair Display) aplicada sólo al navbar links */
 .nav-menu a {
-  color: #fff;
+  color: var(--color-primary); /* color principal sobre fondo blanco */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease-in-out;
-  position: relative; /* necesario para underline animado */
-  font-family: "Playfair Display", serif; /* fuente elegante para navbar */
-  font-size: 1.25rem;           /* 20px base (accesible) - DESKTOP */
-  padding: 0.5rem 0.25rem;   /* mayor area clickeable sin romper layout */
+  position: relative;
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  padding: 0.5rem 0.25rem;
   display: inline-block;
 }
 
 .nav-menu a:hover {
-  color: var(--color-secondary);
-
-  /* Glow suave (integrado) */
-  text-shadow: 0 0 6px rgba(242, 212, 182, 0.55);
+  color: var(--color-primary-light); /* hover más brillante */
+  text-shadow: none; /* sin glow sobre fondo blanco */
 }
 
-/* ===== Underline animado para links ===== */
 .nav-menu a::after {
   content: "";
   position: absolute;
@@ -114,7 +110,7 @@ body {
   bottom: -4px;
   width: 0%;
   height: 2px;
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary-light); /* underline animado */
   transition: width 0.3s ease;
 }
 
@@ -122,10 +118,7 @@ body {
   width: 100%;
 }
 
-/* ==============================
-   Menú móvil (hamburguesa)
-   ============================== */
-/* Ajustes de botón hamburguesa: padding aumentado para evitar recorte de la X */
+/* Menú móvil (hamburguesa) */
 .nav-toggle {
   display: none;
   background: none;
@@ -135,37 +128,33 @@ body {
   justify-content: center;
   align-items: center;
   gap: 4px;
-  padding: 14px; /* Aumentado: suficiente espacio para la X */
+  padding: 14px;
   transition: transform 0.3s ease-in-out;
 }
 
-/* Barras (hamburguesa) dimensionadas según petición */
 .nav-toggle .bar {
   display: block;
-  width: 34px;  /* GRANDE */
-  height: 4.5px; /* GRANDE */
-  background-color: #fff;
+  width: 34px;
+  height: 4.5px;
+  background-color: var(--color-primary); /* barras color primario */
   border-radius: 2px;
   transform-origin: center;
 }
 
-/* --- Transiciones suaves --- */
 .nav-toggle .bar:nth-child(1),
 .nav-toggle .bar:nth-child(2),
 .nav-toggle .bar:nth-child(3) {
   transition: all 0.4s ease;
 }
 
-/* ==============================
-   Overlay (glassmorphism)
-   ============================== */
+/* Overlay */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2); /* más suave sobre navbar blanco */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   opacity: 0;
@@ -179,16 +168,14 @@ body {
   visibility: visible;
 }
 
-/* ==============================
-   Estilos responsive
-   ============================== */
+/* Responsive */
 @media (max-width: 768px) {
   .nav-menu {
     display: none;
     flex-direction: column;
-    background-color: var(--color-primary);
+    background-color: #ffffff; /* fondo blanco en móvil */
     position: absolute;
-    top: 110px; /* <-- aumentado para evitar recorte del logo */
+    top: 110px;
     right: 0;
     width: 100%;
     text-align: center;
@@ -198,7 +185,6 @@ body {
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
 
-  /* <-- FIX crítico: fuerza vertical en <ul> para mobile */
   .nav-menu ul {
     flex-direction: column;
     gap: 1rem;
@@ -210,12 +196,6 @@ body {
     transform: translateY(0);
   }
 
-  .nav-menu ul {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  /* --- Animación secuencial de links --- */
   .nav-menu.active ul li {
     opacity: 0;
     transform: translateY(10px);
@@ -228,7 +208,6 @@ body {
   .nav-menu.active ul li:nth-child(4) { animation-delay: 0.4s; }
   .nav-menu.active ul li:nth-child(5) { animation-delay: 0.5s; }
   .nav-menu.active ul li:nth-child(6) { animation-delay: 0.6s; }
-
 
   @keyframes menuFadeIn {
     from {
@@ -245,12 +224,12 @@ body {
     display: flex;
   }
 
-  /* Ajuste tipográfico mobile: tamaño ligeramente mayor */
   .nav-menu a {
-    font-size: 1.375rem; /* ~22px para mejor lectura en móvil */
-    padding: 0.9rem 0;   /* área de toque generosa */
+    font-size: 1.375rem;
+    padding: 0.9rem 0;
   }
 }
+
 
 /* ==============================
    HERO START
